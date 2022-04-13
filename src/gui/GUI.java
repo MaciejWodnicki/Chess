@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 public class GUI extends JFrame {
 	public GUI()
 	{
-		//jknkjnkjnjjk
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		
