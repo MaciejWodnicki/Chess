@@ -5,6 +5,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GUI extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public GUI()
 	{
 		JFrame frame = new JFrame();
