@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.Console;
 import javax.swing.*;
 
 public class MyPanel extends JPanel{
@@ -33,6 +32,7 @@ public class MyPanel extends JPanel{
 
 	Point prevPt;
 	Point nextPt;
+	Piece inHand;
 	MyPanel(){
 
 		ClickListener clickListener = new ClickListener();
@@ -89,13 +89,30 @@ public class MyPanel extends JPanel{
 	private class ClickListener extends MouseAdapter {
 		public void mousePressed(MouseEvent e){
 			prevPt = e.getPoint();
-			System.out.println(prevPt.getX());
+			System.out.println("press: "+(int)prevPt.getX()/gridScale+", "+(int)prevPt.getY()/gridScale);
+
+			inHand = gameBoard.getPiece((int)prevPt.getX()/gridScale,
+										(int)prevPt.getY()/gridScale);
+
 
 		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			nextPt = e.getPoint();
+			System.out.println("release: "+(int)nextPt.getX()/gridScale+", "+(int)nextPt.getY()/gridScale);
+			int x = (int)nextPt.getX()/gridScale;
+			int y = (int)nextPt.getY()/gridScale;
+			if(inHand!=null&&inHand.canMoveTo(x,y) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
+			{
+				inHand.setPosition(x,y);
+				gameBoard.placePiece(inHand,x,y);
+				gameBoard.placePiece(null,(int)prevPt.getX()/gridScale,
+						(int)prevPt.getY()/gridScale);
+			}
+
+			inHand = null;
+			repaint();
 		}
 	}
 
@@ -103,8 +120,8 @@ public class MyPanel extends JPanel{
 		public void mouseDragged(MouseEvent e) {
 			Point currentPt = e.getPoint();
 
-			//move tmp
-/*			if(currentPt.getX()<bKingCorner.getX()+bKing.getIconWidth() && currentPt.getX()>bKingCorner.getX()
+/*			//move tmp
+			if(currentPt.getX()<bKingCorner.getX()+bKing.getIconWidth() && currentPt.getX()>bKingCorner.getX()
 			&& currentPt.getY()<bKingCorner.getY()+bKing.getIconHeight() &&currentPt.getY()>bKingCorner.getY())
 			bKingCorner.translate(
 					(int)(currentPt.getX() - prevPt.getX()),
@@ -113,7 +130,7 @@ public class MyPanel extends JPanel{
 
 
 			
-			prevPt=currentPt;
+			//prevPt=currentPt;
 			repaint();
 		}
 	}

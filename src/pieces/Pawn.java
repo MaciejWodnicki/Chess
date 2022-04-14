@@ -15,8 +15,7 @@ public class Pawn extends Piece {
 
 	@Override
 	public boolean canMoveTo(int x, int y) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

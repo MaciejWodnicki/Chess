@@ -11,7 +11,7 @@ public class GameBoard{
 		initBoard();
 		
 	}
-	public void initBoard()
+	private void initBoard()
 	{
 		for(int i=0; i<8;i++)
 		{
@@ -51,6 +51,10 @@ public class GameBoard{
 	{
 		return board[x][y].getPiece();
 	}
-	
-	
+
+	public void placePiece(Piece piece,int x, int y)
+	{
+		board[x][y].setPiece(piece);
+	}
+
 }

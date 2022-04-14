@@ -12,7 +12,7 @@ public class Knight extends Piece{
 
     @Override
     public boolean canMoveTo(int x, int y) {
-        return false;
+        return true;
     }
 
     @Override

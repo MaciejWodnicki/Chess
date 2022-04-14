@@ -15,6 +15,8 @@ public abstract class Piece {
 	public abstract String getType();
 	public void setPosition(int x, int y) { m_x = x; m_y = y;}
 	public boolean isBlack() {return isBlack;}
+	public int getX(){return m_x;}
+	public int getY(){return m_y;}
 	public abstract boolean canMoveTo(int x, int y);
 	public abstract int moveTo(int x, int y);
 	

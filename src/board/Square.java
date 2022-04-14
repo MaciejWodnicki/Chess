@@ -17,23 +17,16 @@ public class Square {
 	
 	public Piece getPiece()
 	{
-		if(m_piece!=null)
-			return m_piece;
-		else
-			return null;
+		return m_piece;
 	}
 	
 	public void setPiece(Piece p)
 	{
-		if(p!=null)
-		{
+		if(p!=null) {
 			p.setPosition(m_x, m_y);
-			m_piece = p;			
 		}
+		m_piece = p;
+
 	}
-	
-	public int getX() {return m_x;}
-	public int getY() {return m_y;}
-	
 	
 }
