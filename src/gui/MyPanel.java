@@ -12,7 +12,7 @@ import javax.swing.*;
 
 public class MyPanel extends JPanel{
 
-	final int scale = 64;
+	final int gridScale = 64;
 
 	ImageIcon bBishop = new ImageIcon("pngs/bb.png");
 	ImageIcon bKing = new ImageIcon("pngs/bki.png");
@@ -32,6 +32,7 @@ public class MyPanel extends JPanel{
 
 
 	Point prevPt;
+	Point nextPt;
 	MyPanel(){
 
 		ClickListener clickListener = new ClickListener();
@@ -55,29 +56,32 @@ public class MyPanel extends JPanel{
 			for(int i=0; i<8;i+=2)
 			{
 				g2D.setColor(Color.BLACK);
-				g2D.fillRect(i*scale,h*scale,scale,scale);
+				g2D.fillRect(i*gridScale,h*gridScale,gridScale,gridScale);
 
 				g2D.setColor(Color.gray);
-				g2D.fillRect((i+1)*scale,h*scale,scale,scale);
+				g2D.fillRect((i+1)*gridScale,h*gridScale,gridScale,gridScale);
 			}
 			h++;
 			for(int i=0; i<8;i+=2)
 			{
 				g2D.setColor(Color.gray);
-				g2D.fillRect(i*scale,h*scale,scale,scale);
+				g2D.fillRect(i*gridScale,h*gridScale,gridScale,gridScale);
 
 				g2D.setColor(Color.BLACK);
-				g2D.fillRect((i+1)*scale,h*scale,scale,scale);
+				g2D.fillRect((i+1)*gridScale,h*gridScale,gridScale,gridScale);
 			}
 			h++;
 		}
+
+		//draw pieces
 		for(int i = 0; i< 8;i++)
 		{
 			for(int j = 0; j< 8;j++)
 			{
-				DrawPiece(gameBoard.getPiece(i,j),g,i*scale,j*scale);
+				DrawPiece(gameBoard.getPiece(i,j),g,i*gridScale,j*gridScale);
 			}
 		}
+
 		/////////////////
 	}
 
@@ -89,6 +93,10 @@ public class MyPanel extends JPanel{
 
 		}
 
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			nextPt = e.getPoint();
+		}
 	}
 
 	private class DragListener extends MouseMotionAdapter {

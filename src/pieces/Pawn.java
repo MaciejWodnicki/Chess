@@ -6,17 +6,12 @@ public class Pawn extends Piece {
 	{
 		super(x,y,black);
 	}
+
 	@Override
 	public String getType() {
 		return "Pawn";
 	}
 
-
-	@Override
-	public boolean isBlack() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean canMoveTo(int x, int y) {
