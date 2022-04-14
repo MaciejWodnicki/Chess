@@ -2,20 +2,18 @@ package pieces;
 
 public class Pawn extends Piece {
 
-	@Override
-	public void setPosition(int x, int y) {
-		// TODO Auto-generated method stub
-		
+	public Pawn(int x, int y, boolean black)
+	{
+		super(x,y,black);
 	}
+	@Override
+	public String getType() {
+		return "Pawn";
+	}
+
 
 	@Override
 	public boolean isBlack() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean isWhite() {
 		// TODO Auto-generated method stub
 		return false;
 	}

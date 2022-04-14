@@ -2,23 +2,18 @@ package pieces;
 
 public class King extends Piece {
 
-	@Override
-	public void setPosition(int x, int y) {
-		// TODO Auto-generated method stub
-		
+	public King(int x, int y, boolean black)
+	{
+		super(x,y,black);
 	}
 
-	@Override
-	public boolean isBlack() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
-	public boolean isWhite() {
-		// TODO Auto-generated method stub
-		return false;
+	public String getType() {
+		return "King";
 	}
+
+
 
 	@Override
 	public boolean canMoveTo(int x, int y) {

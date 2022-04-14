@@ -1,17 +1,18 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MyFrame extends JFrame {
 
-    MyPanel panel;
-
+    final MyPanel panel;
     MyFrame() {
 
         panel = new MyPanel();
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new GridLayout());
         this.add(panel);
         this.pack();
         this.setLocationRelativeTo(null);

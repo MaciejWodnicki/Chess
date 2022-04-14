@@ -3,6 +3,7 @@ package board;
 import pieces.Piece;
 
 public class Square {
+
 	final int width = 50;
 	int m_x, m_y;
 	Piece m_piece = null;
