@@ -103,7 +103,7 @@ public class MyPanel extends JPanel{
 			int x = (int)nextPt.getX()/gridScale;
 			int y = (int)nextPt.getY()/gridScale;
 
-			if(inHand!=null&&inHand.canMoveTo(x,y,gameBoard.getPiece(x,y)) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
+			if(inHand!=null&&inHand.canMoveTo(x,y, gameBoard) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
 			{
 				inHand.setPosition(x,y);
 				gameBoard.placePiece(inHand,x,y);

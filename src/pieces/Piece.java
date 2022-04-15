@@ -1,5 +1,7 @@
 package pieces;
 
+import board.GameBoard;
+
 public abstract class Piece {
 
 	int m_x, m_y;
@@ -17,7 +19,7 @@ public abstract class Piece {
 	public boolean isBlack() {return isBlack;}
 	public int getX(){return m_x;}
 	public int getY(){return m_y;}
-	public abstract boolean canMoveTo(int x, int y, Piece p);
+	public abstract boolean canMoveTo(int x, int y, GameBoard g);
 	
 
 	
