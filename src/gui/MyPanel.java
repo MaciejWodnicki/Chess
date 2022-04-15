@@ -27,18 +27,17 @@ public class MyPanel extends JPanel{
 	ImageIcon wRook = new ImageIcon("pngs/wr.png");
 
 
-	GameBoard gameBoard = new GameBoard();
+	final public static GameBoard gameBoard = new GameBoard();
 
 
 	Point prevPt;
 	Point nextPt;
 	Piece inHand;
+	boolean isTaken;
 	MyPanel(){
 
 		ClickListener clickListener = new ClickListener();
-		DragListener dragListener = new DragListener();
 		this.addMouseListener(clickListener);
-		this.addMouseMotionListener(dragListener);
 
 		this.setPreferredSize(new Dimension(8*64,8*64));
 	}
@@ -103,7 +102,8 @@ public class MyPanel extends JPanel{
 			System.out.println("release: "+(int)nextPt.getX()/gridScale+", "+(int)nextPt.getY()/gridScale);
 			int x = (int)nextPt.getX()/gridScale;
 			int y = (int)nextPt.getY()/gridScale;
-			if(inHand!=null&&inHand.canMoveTo(x,y) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
+
+			if(inHand!=null&&inHand.canMoveTo(x,y,gameBoard.getPiece(x,y)) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
 			{
 				inHand.setPosition(x,y);
 				gameBoard.placePiece(inHand,x,y);
@@ -116,24 +116,6 @@ public class MyPanel extends JPanel{
 		}
 	}
 
-	private class DragListener extends MouseMotionAdapter {
-		public void mouseDragged(MouseEvent e) {
-			Point currentPt = e.getPoint();
-
-/*			//move tmp
-			if(currentPt.getX()<bKingCorner.getX()+bKing.getIconWidth() && currentPt.getX()>bKingCorner.getX()
-			&& currentPt.getY()<bKingCorner.getY()+bKing.getIconHeight() &&currentPt.getY()>bKingCorner.getY())
-			bKingCorner.translate(
-					(int)(currentPt.getX() - prevPt.getX()),
-					(int)(currentPt.getY() - prevPt.getY())
-			);*/
-
-
-			
-			//prevPt=currentPt;
-			repaint();
-		}
-	}
 
 
 	private void DrawPiece(Piece p,Graphics g, int x, int y) {

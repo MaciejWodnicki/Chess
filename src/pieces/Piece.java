@@ -17,8 +17,7 @@ public abstract class Piece {
 	public boolean isBlack() {return isBlack;}
 	public int getX(){return m_x;}
 	public int getY(){return m_y;}
-	public abstract boolean canMoveTo(int x, int y);
-	public abstract int moveTo(int x, int y);
+	public abstract boolean canMoveTo(int x, int y, Piece p);
 	
 
 	
