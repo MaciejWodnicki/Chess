@@ -27,7 +27,7 @@ public class MyPanel extends JPanel{
 	ImageIcon wRook = new ImageIcon("pngs/wr.png");
 
 
-	final public static GameBoard gameBoard = new GameBoard();
+	public static GameBoard gameBoard = new GameBoard();
 
 
 	Point prevPt;

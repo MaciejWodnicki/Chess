@@ -20,9 +20,9 @@ public class Pawn extends Piece {
 		Piece p = g.getPiece(x,y);
 
 
-		if(p!=null) // can't capture the same color
+		if(p!=null) // can't capture the same color or a King
 		{
-			if(p.isBlack() && this.isBlack() || !p.isBlack() && !this.isBlack()) {
+			if(p.isBlack() && this.isBlack() || !p.isBlack() && !this.isBlack()||p.getType()=="King") {
 				return false;
 			}
 		}

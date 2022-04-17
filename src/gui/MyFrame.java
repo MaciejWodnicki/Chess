@@ -1,12 +1,15 @@
 package gui;
 
+import network.Client;
+import network.Server;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MyFrame extends JFrame {
 
     final MyPanel panel;
-    MyFrame() {
+    public MyFrame(){
 
         panel = new MyPanel();
 
@@ -19,7 +22,7 @@ public class MyFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new MyFrame();
+    public static void main(String[] args) throws Exception{
+        //new MyFrame();
     }
 }

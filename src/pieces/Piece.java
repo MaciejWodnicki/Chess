@@ -2,7 +2,9 @@ package pieces;
 
 import board.GameBoard;
 
-public abstract class Piece {
+import java.io.Serializable;
+
+public abstract class Piece implements Serializable {
 
 	int m_x, m_y;
 	boolean isBlack;

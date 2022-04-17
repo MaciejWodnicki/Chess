@@ -17,15 +17,17 @@ public class Queen extends Piece{
         Piece p = g.getPiece(x,y);
 
 
-        if(p!=null) // can't capture the same color
+        if(p!=null) // can't capture the same color or a King
         {
-            if(p.isBlack() && this.isBlack() || !p.isBlack() && !this.isBlack()) {
+            if(p.isBlack() && this.isBlack() || !p.isBlack() && !this.isBlack()||p.getType()=="King") {
                 return false;
             }
         }
 
         if((y-m_y!=x-m_x && y-m_y!=m_x-x )&&(m_x!=x && m_y!=y))
+        {
             return false;
+        }
 
         return true;
     }

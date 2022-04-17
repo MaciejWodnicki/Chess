@@ -2,7 +2,9 @@ package board;
 
 import pieces.Piece;
 
-public class Square {
+import java.io.Serializable;
+
+public class Square implements Serializable {
 
 	final int width = 50;
 	int m_x, m_y;
