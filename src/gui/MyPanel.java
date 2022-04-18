@@ -109,7 +109,6 @@ public class MyPanel extends JPanel{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			nextPt = e.getPoint();
-			System.out.println("release: "+(int)nextPt.getX()/gridScale+", "+(int)nextPt.getY()/gridScale);
 			int x = (int)nextPt.getX()/gridScale;
 			int y = (int)nextPt.getY()/gridScale;
 

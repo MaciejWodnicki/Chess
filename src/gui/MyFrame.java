@@ -20,7 +20,4 @@ public class MyFrame extends JFrame {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) throws Exception{
-        new MyFrame();
-    }
 }
