@@ -1,7 +1,5 @@
 package gui;
 
-import network.Client;
-import network.Server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +21,6 @@ public class MyFrame extends JFrame {
     }
 
     public static void main(String[] args) throws Exception{
-        //new MyFrame();
+        new MyFrame();
     }
 }

@@ -47,8 +47,6 @@ public class GameBoard implements Serializable {
 			board[i][6].setPiece(new Pawn(i,6,false));
 			board[i][1].setPiece(new Pawn(i,1,true));
 		}
-		board[3][3].setPiece(new Bishop(0,0,true));
-		board[4][3].setPiece(new Bishop(0,0,false));
 
 	}
 	public Piece getPiece(int x, int y)

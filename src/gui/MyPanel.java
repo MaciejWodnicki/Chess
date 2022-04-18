@@ -34,12 +34,22 @@ public class MyPanel extends JPanel{
 	Point nextPt;
 	Piece inHand;
 	boolean isTaken;
+
+	int blackCanMove = -1;
 	MyPanel(){
 
 		ClickListener clickListener = new ClickListener();
 		this.addMouseListener(clickListener);
 
 		this.setPreferredSize(new Dimension(8*64,8*64));
+
+		if(blackCanMove == -1)
+		{
+			System.out.println("White start");
+		}
+		else
+			System.out.println("Black start");
+
 	}
 
 
@@ -81,6 +91,7 @@ public class MyPanel extends JPanel{
 			}
 		}
 
+
 		/////////////////
 	}
 
@@ -88,7 +99,6 @@ public class MyPanel extends JPanel{
 	private class ClickListener extends MouseAdapter {
 		public void mousePressed(MouseEvent e){
 			prevPt = e.getPoint();
-			System.out.println("press: "+(int)prevPt.getX()/gridScale+", "+(int)prevPt.getY()/gridScale);
 
 			inHand = gameBoard.getPiece((int)prevPt.getX()/gridScale,
 										(int)prevPt.getY()/gridScale);
@@ -103,12 +113,29 @@ public class MyPanel extends JPanel{
 			int x = (int)nextPt.getX()/gridScale;
 			int y = (int)nextPt.getY()/gridScale;
 
-			if(inHand!=null&&inHand.canMoveTo(x,y, gameBoard) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale))
+			//black move
+			if(inHand!=null&&inHand.canMoveTo(x,y, gameBoard) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale) && inHand.isBlack()==true && blackCanMove==1)
 			{
 				inHand.setPosition(x,y);
 				gameBoard.placePiece(inHand,x,y);
 				gameBoard.placePiece(null,(int)prevPt.getX()/gridScale,
 						(int)prevPt.getY()/gridScale);
+
+
+				System.out.println("White move");
+				blackCanMove = blackCanMove*(-1);
+			}
+
+			//white move
+			if(inHand!=null&&inHand.canMoveTo(x,y, gameBoard) && (x!=(int)prevPt.getX()/gridScale || y!=(int)prevPt.getY()/gridScale) && inHand.isBlack()==false && blackCanMove==-1)
+			{
+				inHand.setPosition(x,y);
+				gameBoard.placePiece(inHand,x,y);
+				gameBoard.placePiece(null,(int)prevPt.getX()/gridScale,
+						(int)prevPt.getY()/gridScale);
+
+				System.out.println("Black move");
+				blackCanMove = blackCanMove*(-1);
 			}
 
 			inHand = null;
